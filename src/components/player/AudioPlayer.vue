@@ -43,6 +43,11 @@ const seek = () => {
   audioRef.value!.currentTime = currentTime.value;
   isPlaying.value = true
 };
+
+const replay = () => {
+  audioRef.value!.currentTime = 0;
+  isPlaying.value = true
+};
 </script>
 
 <template>
@@ -55,7 +60,7 @@ const seek = () => {
       <input type="range" v-model="currentTime" min="0" :max="duration" @input="seek">
       <!-- <p>Current Time: {{ currentTime }}</p>
       <p>Duration: {{ duration }}</p> -->
-      <IconReplay class="w-8 fill-blue-800 cursor-pointer" />
+      <IconReplay class="w-8 fill-blue-800 cursor-pointer" @click="replay" />
     </div>
   </div>
 </template>
