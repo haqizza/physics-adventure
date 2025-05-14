@@ -62,15 +62,8 @@ skyColor.value = skyClass[props.color]
 
 <template>
   <div :class="`relative h-screen w-full ${skyColor}`">
-    <img class="absolute top-0 z-1" :src="skyBg" alt="sky">
-    <img class="absolute bottom-0 z-2" :src="groundBg" alt="ground">
+    <img class="absolute top-0 w-full z-1" :src="skyBg" alt="sky">
+    <img class="absolute bottom-0 w-full z-2" :src="groundBg" alt="ground">
     <slot />
   </div>
 </template>
-
-<style scoped>
-.dark-sky { background-color: #2c5859}
-.red-sky { background-color: #d04b27}
-.light-sky { background-color: #d1efd7}
-.cream-sky { background-color: #fffdcf}
-</style>
