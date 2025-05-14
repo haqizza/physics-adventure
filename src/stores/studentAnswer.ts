@@ -60,16 +60,24 @@ export const useStudentAnswerStore = defineStore('studentAnswer', () => {
     conslusion: conslusion.value
   }
 
-  function createStudentAnswer() {
-    fetch(`${API_URL}/answer`, {
-      method: 'POST',
-      body: JSON.stringify(_body),
-      headers: new Headers({
-        'Content-Type': 'application/json'
+  async function storeStudentAnswer() {
+    try{
+      const response = await fetch(`http://${API_URL}/api/answer`, {
+        method: 'POST',
+        body: JSON.stringify(_body),
+        headers: new Headers({
+          'Content-Type': 'application/json',
+          'Origin': 'localhost'
+        })
       })
-    })
-      .then(function() {})
-      .catch(function() { })
+
+      const result = await response.json()
+
+      return result
+    }
+    catch (error) {
+      return error
+    }
   }
 
   return {
@@ -90,6 +98,6 @@ export const useStudentAnswerStore = defineStore('studentAnswer', () => {
     table_p2_2,
     table_p2_3,
     conslusion,
-    createStudentAnswer
+    storeStudentAnswer
   }
 })
