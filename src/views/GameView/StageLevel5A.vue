@@ -43,21 +43,21 @@ const isNextButtonHidden = ref(true)
 const studentAnswer = useStudentAnswerStore()
 
 const inputValues = reactive<TableInputValues>({
-  p11: '0.5',
-  p12: '1.10',
-  p13: '3',
-  p21: '1.5',
-  p22: '3',
-  p23: '5',
+  p11: '0.7',
+  p12: '1.20',
+  p13: '1.8',
+  p21: '1.45',
+  p22: '2.85',
+  p23: '4.9'
 })
 
 const answer: TableAnswerRange = {
-  p11: [0.5,  0.9],
-  p12: [1.05, 1.45],
-  p13: [2.65, 3.05],
-  p21: [1.25, 1.65],
-  p22: [2.6,  3.0],
-  p23: [4.7,  5.1],
+  p11: [0.7],
+  p12: [1.20, 1.30],
+  p13: [1.80, 1.93],
+  p21: [1.40, 1.45],
+  p22: [2.80,  2.86],
+  p23: [4.9],
 }
 
 const answerCorrection = reactive<AnswerCorrection>({
@@ -78,15 +78,19 @@ const checkTableFilled = () => {
 
   let correctCount = 0
   for (const [key, val] of Object.entries(inputValues)) {
-    if(
-      parseFloat(val) >= answer[key as keyof TableAnswerRange][0] &&
-      parseFloat(val) <= answer[key as keyof TableAnswerRange][1]
-    ) {
-      answerCorrection[key as keyof AnswerCorrection] = true
-      correctCount++
+    const answerPair: Array<number> = answer[key as keyof TableAnswerRange]
+    let result: boolean = false
+
+    if (answerPair.length == 1) {
+      result = parseFloat(val) == answerPair[0]
     }
     else {
-      answerCorrection[key as keyof AnswerCorrection] = false
+      result = (parseFloat(val) >= answerPair[0]) && (parseFloat(val) <= answerPair[1])
+    }
+
+    if (result) {
+      correctCount++
+      answerCorrection[key as keyof AnswerCorrection] = result
     }
   }
 
@@ -163,6 +167,7 @@ const backToExperiment = () => {
                       :backgroundColor="answerCorrection.p11 ? '!bg-transparent' : '!bg-red-400'"
                       labelClass="!w-0 !p-0"
                       inputClass="!w-full !p-1  !text-base text-center"
+                      placeholder="0"
                     />
                   </td>
                   <td class="w-min-xs md:px-2 md:py-2 text-center border-4 border-yellow-500 rounded">
@@ -172,6 +177,7 @@ const backToExperiment = () => {
                       :backgroundColor="answerCorrection.p21 ? '!bg-transparent' : '!bg-red-400'"
                       labelClass="!w-0 !p-0"
                       inputClass="!w-full !p-1 !text-base text-center"
+                      placeholder="0"
                     />
                   </td>
                 </tr>
@@ -186,6 +192,7 @@ const backToExperiment = () => {
                       :backgroundColor="answerCorrection.p12 ? '!bg-transparent' : '!bg-red-400'"
                       labelClass="!w-0 !p-0"
                       inputClass="!w-full !p-1 !text-base text-center"
+                      placeholder="0"
                     />
                   </td>
                   <td class="w-min-xs md:px-2 md:py-2 text-center border-4 border-yellow-500 rounded">
@@ -195,6 +202,7 @@ const backToExperiment = () => {
                       :backgroundColor="answerCorrection.p22 ? '!bg-transparent' : '!bg-red-400'"
                       labelClass="!w-0 !p-0"
                       inputClass="!w-full !p-1 !text-base text-center"
+                      placeholder="0"
                     />
                   </td>
                 </tr>
@@ -209,6 +217,7 @@ const backToExperiment = () => {
                       :backgroundColor="answerCorrection.p13 ? '!bg-transparent' : '!bg-red-400'"
                       labelClass="!w-0 !p-0"
                       inputClass="!w-full !p-1 !text-base text-center"
+                      placeholder="0"
                     />
                   </td>
                   <td class="w-min-xs md:px-2 md:py-2 text-center border-4 border-yellow-500 rounded">
@@ -218,6 +227,7 @@ const backToExperiment = () => {
                       :backgroundColor="answerCorrection.p23 ? '!bg-transparent' : '!bg-red-400'"
                       labelClass="!w-0 !p-0"
                       inputClass="!w-full !p-1 !text-base text-center"
+                      placeholder="0"
                     />
                   </td>
                 </tr>
