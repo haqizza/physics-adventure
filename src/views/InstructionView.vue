@@ -69,7 +69,7 @@ const handleTimeUpdate = (time: number) => {
     isModalActive.value = false
   }
   else if (time >= 23) {
-    activateModal(2)
+    activateModal(3)
   }
   else if (time >= 21) {
     isModalActive.value = false
