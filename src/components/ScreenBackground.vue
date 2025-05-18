@@ -6,13 +6,18 @@ import SkyImage3 from '@/assets/background/sky3.png'
 import SkyImage4 from '@/assets/background/sky4.png'
 import SkyImage5 from '@/assets/background/sky5.png'
 import SkyImage6 from '@/assets/background/sky6.png'
-import DesertImage1 from '@/assets/background/desert1.png';
-import DesertImage2 from '@/assets/background/desert2.png';
-import DesertImage3 from '@/assets/background/desert3.png';
-import DesertImage4 from '@/assets/background/desert4.png';
-import ForestImage5 from '@/assets/background/forest1.png';
-import ForestImage6 from '@/assets/background/forest2.png';
-import ForestImage7 from '@/assets/background/forest3.png';
+import SkyImage7 from '@/assets/background/sky7.png'
+import SkyImage8 from '@/assets/background/sky8.png'
+import DesertImage1 from '@/assets/background/desert1.png'
+import DesertImage2 from '@/assets/background/desert2.png'
+import DesertImage3 from '@/assets/background/desert3.png'
+import DesertImage4 from '@/assets/background/desert4.png'
+import ForestImage1 from '@/assets/background/forest1.png'
+import ForestImage2 from '@/assets/background/forest2.png'
+import ForestImage3 from '@/assets/background/forest3.png'
+import ForestImage4 from '@/assets/background/forest4.png'
+import ForestImage5 from '@/assets/background/forest5.png'
+import ForestImage6 from '@/assets/background/forest6.png'
 
 interface Props {
   sky: string,
@@ -37,7 +42,9 @@ const skyImage: BackgroundData = {
   sky3: SkyImage3,
   sky4: SkyImage4,
   sky5: SkyImage5,
-  sky6: SkyImage6
+  sky6: SkyImage6,
+  sky7: SkyImage7,
+  sky8: SkyImage8
 }
 
 const groundImage: BackgroundData = {
@@ -45,9 +52,12 @@ const groundImage: BackgroundData = {
   ground2: DesertImage2,
   ground3: DesertImage3,
   ground4: DesertImage4,
-  ground5: ForestImage5,
-  ground6: ForestImage6,
-  ground7: ForestImage7
+  ground5: ForestImage1,
+  ground6: ForestImage2,
+  ground7: ForestImage3,
+  ground8: ForestImage4,
+  ground9: ForestImage5,
+  ground10: ForestImage6,
 }
 
 
