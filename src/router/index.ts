@@ -13,6 +13,9 @@ import StageLevel6 from '@/views/GameView/StageLevel6.vue'
 import StageLevel7 from '@/views/GameView/StageLevel7.vue'
 import StageLevel8 from '@/views/GameView/StageLevel8.vue'
 import ClosingView from '@/views/ClosingView.vue'
+import StageLevel5CQuestion from '@/views/GameView/StageLevel5CQuestion.vue'
+import StageLevel5BQuestion from '@/views/GameView/StageLevel5BQuestion.vue'
+import StageLevel5AQuestion from '@/views/GameView/StageLevel5AQuestion.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -56,16 +59,31 @@ const router = createRouter({
       path: '/level-5a',
       name: 'level-5a',
       component: StageLevel5A,
-    },,
+    },
+    {
+      path: '/level-5a-question',
+      name: 'level-5a-question',
+      component: StageLevel5AQuestion,
+    },
     {
       path: '/level-5b',
       name: 'level-5b',
       component: StageLevel5B,
-    },,
+    },
+    {
+      path: '/level-5b-question',
+      name: 'level-5b-question',
+      component: StageLevel5BQuestion,
+    },
     {
       path: '/level-5c',
       name: 'level-5c',
       component: StageLevel5C,
+    },
+    {
+      path: '/level-5c-question',
+      name: 'level-5c-question',
+      component: StageLevel5CQuestion,
     },
     {
       path: '/level-6',

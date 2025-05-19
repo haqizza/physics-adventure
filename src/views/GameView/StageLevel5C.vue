@@ -15,15 +15,18 @@ interface TableInputValues {
   p21: string
   p22: string
   p23: string
+  yL1: string
+  yL2: string
+  yL3: string
 }
 
-interface TableAnswer {
-  p11: number
-  p12: number
-  p13: number
-  p21: number
-  p22: number
-  p23: number
+interface TableAnswerRange {
+  p11: Array<number>
+  p12: Array<number>
+  p13: Array<number>
+  p21: Array<number>
+  p22: Array<number>
+  p23: Array<number>
 }
 
 interface AnswerCorrection {
@@ -44,15 +47,18 @@ const inputValues = reactive<TableInputValues>({
   p21: '4.65',
   p22: '3.55',
   p23: '2.45',
+  yL1: '',
+  yL2: '',
+  yL3: '',
 })
 
-const answer: TableAnswer = {
-  p11: 2.15,
-  p12: 1.7,
-  p13: 1.2,
-  p21: 4.65,
-  p22: 3.55,
-  p23: 2.45,
+const answer: TableAnswerRange = {
+  p11: [2.10, 2.20],
+  p12: [1.7],
+  p13: [1.17, 1.24],
+  p21: [4.56, 4.69],
+  p22: [3.50, 3.62],
+  p23: [2.20, 2.52],
 }
 
 const answerCorrection = reactive<AnswerCorrection>({
@@ -70,13 +76,25 @@ const incorrectAudioRef = useTemplateRef<HTMLAudioElement>('audioIncorrect')
 const checkTableFilled = () => {
   let correctCount = 0
   for (const [key, val] of Object.entries(inputValues)) {
-    if(parseFloat(val) == answer[key as keyof TableAnswer]) {
-      answerCorrection[key as keyof AnswerCorrection] = true
-      correctCount++
+    if (key.search('y') >= 0) {
+      break
+    }
+
+    const answerPair:Array<number> = answer[key as keyof TableAnswerRange]
+    let result = false
+
+    if (answerPair.length == 1) {
+      result = parseFloat(val) == answerPair[0]
     }
     else {
-      answerCorrection[key as keyof AnswerCorrection] = false
+      result = (parseFloat(val) >= answerPair[0]) && (parseFloat(val) <= answerPair[1])
     }
+
+    if (result) {
+      correctCount++
+    }
+
+    answerCorrection[key as keyof AnswerCorrection] = result
   }
 
   if(correctCount >= 6){
@@ -90,7 +108,7 @@ const checkTableFilled = () => {
 }
 
 const completeLevel = () => {
-  router.push({name: 'level-6'})
+  router.push({name: 'level-5c-question'})
 }
 
 const isAnswerWrong = ref(false)
@@ -119,9 +137,11 @@ const backToExperiment = () => {
               <thead>
                 <tr>
                   <th class="px-2 py-2 bg-yellow-100 text-center border-4 border-blue-300 rounded" rowspan="2">Percobaan ke-</th>
+                  <th class="px-2 py-2 bg-yellow-100 text-center border-4 border-blue-300 rounded font-bold text-green-600" rowspan="2">Jarak Kisi Ke Layar (L)</th>
                   <th class="px-2 py-2 bg-yellow-100 text-center border-4 border-blue-300 rounded font-bold text-green-600" rowspan="2">Panjang Gelombang (nm)</th>
                   <th class="px-2 py-2 bg-yellow-100 text-center border-4 border-blue-300 rounded font-bold text-green-600" rowspan="2">Spektrum Warna</th>
                   <th class="px-2 py-2 bg-yellow-100 text-center border-4 border-blue-300 rounded" colspan="2">Jarak Pola Difraksi</th>
+                  <th class="px-2 py-2 bg-yellow-100 text-center border-4 border-yellow-500 rounded font-bold" rowspan="2">y/L</th>
                 </tr>
                 <tr>
                   <td class="px-2 py-2 bg-yellow-100 text-center border-4 border-blue-300 rounded font-bold">P1 Kanan</td>
@@ -131,6 +151,7 @@ const backToExperiment = () => {
               <tbody>
                 <tr>
                   <td class="px-2 py-2 bg-yellow-100 text-center border-4 border-blue-300 rounded">1</td>
+                  <td class="px-2 py-2 bg-yellow-100 text-center border-4 border-blue-300 rounded font-bold text-green-600">10 m</td>
                   <td class="px-2 py-2 bg-yellow-100 text-center border-4 border-blue-300 rounded font-bold text-green-600">700 nm</td>
                   <td class="px-2 py-2 bg-yellow-100 text-center border-4 border-blue-300 rounded font-bold text-green-600">Merah</td>
                   <td class="w-min-xs md:px-2 md:py-2 text-center border-4 border-blue-300 rounded">
@@ -151,9 +172,20 @@ const backToExperiment = () => {
                       inputClass="!w-full !p-1 !text-base text-center"
                     />
                   </td>
+                  <td class="w-min-xs md:px-2 md:py-2 text-center border-4 border-yellow-500 rounded">
+                    <BaseInput
+                      id="yL1"
+                      v-model="inputValues.yL1"
+                      :backgroundColor="answerCorrection.p11 && answerCorrection.p21 ? '!bg-white/25' : '!bg-red-400'"
+                      labelClass="!w-0 !p-0"
+                      inputClass="!w-full !p-1 !text-base text-center"
+                      placeholder="0"
+                    />
+                  </td>
                 </tr>
                 <tr>
                   <td class="px-2 py-2 bg-yellow-100 text-center border-4 border-blue-300 rounded">2</td>
+                  <td class="px-2 py-2 bg-yellow-100 text-center border-4 border-blue-300 rounded font-bold text-green-600">10 m</td>
                   <td class="px-2 py-2 bg-yellow-100 text-center border-4 border-blue-300 rounded font-bold text-green-600">560 nm</td>
                   <td class="px-2 py-2 bg-yellow-100 text-center border-4 border-blue-300 rounded font-bold text-green-600">Hijau</td>
                   <td class="w-min-xs md:px-2 md:py-2 text-center border-4 border-blue-300 rounded">
@@ -174,9 +206,20 @@ const backToExperiment = () => {
                       inputClass="!w-full !p-1 !text-base text-center"
                     />
                   </td>
+                  <td class="w-min-xs md:px-2 md:py-2 text-center border-4 border-yellow-500 rounded">
+                    <BaseInput
+                      id="yL2"
+                      v-model="inputValues.yL2"
+                      :backgroundColor="answerCorrection.p12 && answerCorrection.p22 ? '!bg-white/25' : '!bg-red-400'"
+                      labelClass="!w-0 !p-0"
+                      inputClass="!w-full !p-1 !text-base text-center"
+                      placeholder="0"
+                    />
+                  </td>
                 </tr>
                 <tr>
                   <td class="px-2 py-2 bg-yellow-100 text-center border-4 border-blue-300 rounded">3</td>
+                  <td class="px-2 py-2 bg-yellow-100 text-center border-4 border-blue-300 rounded font-bold text-green-600">10 m</td>
                   <td class="px-2 py-2 bg-yellow-100 text-center border-4 border-blue-300 rounded font-bold text-green-600">400 nm</td>
                   <td class="px-2 py-2 bg-yellow-100 text-center border-4 border-blue-300 rounded font-bold text-green-600">Biru</td>
                   <td class="w-min-xs md:px-2 md:py-2 text-center border-4 border-blue-300 rounded">
@@ -195,6 +238,16 @@ const backToExperiment = () => {
                       :backgroundColor="answerCorrection.p23 ? '!bg-white/25' : '!bg-red-400'"
                       labelClass="!w-0 !p-0"
                       inputClass="!w-full !p-1 !text-base text-center"
+                    />
+                  </td>
+                  <td class="w-min-xs md:px-2 md:py-2 text-center border-4 border-yellow-500 rounded">
+                    <BaseInput
+                      id="yL3"
+                      v-model="inputValues.yL3"
+                      :backgroundColor="answerCorrection.p13 && answerCorrection.p23 ? '!bg-white/25' : '!bg-red-400'"
+                      labelClass="!w-0 !p-0"
+                      inputClass="!w-full !p-1 !text-base text-center"
+                      placeholder="0"
                     />
                   </td>
                 </tr>
