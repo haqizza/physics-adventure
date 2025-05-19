@@ -108,7 +108,7 @@ const checkTableFilled = () => {
 }
 
 const completeLevel = () => {
-  router.push({name: 'level-6'})
+  router.push({name: 'level-5c-question'})
 }
 
 const isAnswerWrong = ref(false)

@@ -33,7 +33,9 @@ const skyClass: BackgroundData = {
   dark: 'dark-sky',
   red : 'red-sky',
   light : 'light-sky',
-  cream : 'cream-sky'
+  cream : 'cream-sky',
+  yellow : 'yellow-sky',
+  white : 'white-sky'
 }
 
 const skyImage: BackgroundData = {

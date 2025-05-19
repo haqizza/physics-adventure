@@ -8,7 +8,6 @@ import IncorrectAudio from '@/assets/audio/page-9-before false-answer.m4a';
 import CorrectAudio from '@/assets/audio/page-9-before right-answer.m4a';
 import router from '@/router';
 import { reactive, ref, useTemplateRef } from 'vue';
-import { useStudentAnswerStore } from '@/stores/studentAnswer';
 import BaseInput from '@/components/Form/BaseInput.vue';
 
 interface TableInputValues {
@@ -39,8 +38,6 @@ interface AnswerCorrection {
 }
 
 const isNextButtonHidden = ref(true)
-
-const studentAnswer = useStudentAnswerStore()
 
 const inputValues = reactive<TableInputValues>({
   p11: '0.7',
@@ -104,19 +101,8 @@ const checkTableFilled = () => {
   }
 }
 
-
-
-
 const completePhase = () => {
-  studentAnswer.$patch({
-    table_p1_1: parseFloat(inputValues.p11),
-    table_p1_2: parseFloat(inputValues.p12),
-    table_p1_3: parseFloat(inputValues.p13),
-    table_p2_1: parseFloat(inputValues.p21),
-    table_p2_2: parseFloat(inputValues.p22),
-    table_p2_3: parseFloat(inputValues.p23)
-  })
-  router.push({name: 'level-5b'})
+  router.push({name: 'level-5a-question'})
 }
 
 const isAnswerWrong = ref(false)
