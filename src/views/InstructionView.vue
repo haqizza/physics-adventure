@@ -112,7 +112,7 @@ const toGame = () => {
         <div :class="{'flex w-full my-10': true, 'hidden': nextButtonHidden}">
           <TheButton text="Next Stage" class="mx-auto" @click="toGame"/>
         </div>
-        <div class="fixed bottom-2 right-1 md:left-1 flex justify-between items-end ml-12 z-9999">
+        <div class="fixed bottom-2 md:left-1 flex justify-between items-end ml-12 z-9999">
           <div>
             <img
               :class="{
