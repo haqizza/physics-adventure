@@ -60,7 +60,7 @@ export const useStudentAnswerStore = defineStore('studentAnswer', () => {
         }
       }
 
-      const response = await fetch(`http://${API_URL}/api/answer`, {
+      const response = await fetch(`${API_URL}/answer`, {
         method: 'POST',
         body: JSON.stringify(_body),
         headers: new Headers({
