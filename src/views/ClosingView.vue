@@ -13,7 +13,7 @@ import AudioPlayer from '@/components/AudioPlayer.vue';
       class="absolute h-screen w-full z-100 overflow-hidden"
     >
       <div class="flex justify-center gap-4">
-        <div class="flex flex-col items-center py-8 pl-12 gap-6">
+        <div class="flex flex-col items-center py-8 md:pl-12 gap-6">
           <div class="mt-8 text-center font-knewafe text-gray-900 text-5xl">
             THANK YOUUUUU
           </div>
