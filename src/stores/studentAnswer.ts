@@ -12,12 +12,9 @@ interface StudentAnswer {
   hypothesis_1: string;
   hypothesis_2: string;
   hypothesis_3: string;
-  table_p1_1: number;
-  table_p1_2: number;
-  table_p1_3: number;
-  table_p2_1: number;
-  table_p2_2: number;
-  table_p2_3: number;
+  tableQ_1: string;
+  tableQ_2: string;
+  tableQ_3: string;
   conslusion: string;
 }
 
@@ -32,12 +29,9 @@ export const useStudentAnswerStore = defineStore('studentAnswer', () => {
   const hypothesis_1 = ref('')
   const hypothesis_2 = ref('')
   const hypothesis_3 = ref('')
-  const table_p1_1 = ref(0)
-  const table_p1_2 = ref(0)
-  const table_p1_3 = ref(0)
-  const table_p2_1 = ref(0)
-  const table_p2_2 = ref(0)
-  const table_p2_3 = ref(0)
+  const tableQ_1 = ref('')
+  const tableQ_2 = ref('')
+  const tableQ_3 = ref('')
   const conslusion = ref('')
 
   const API_URL = import.meta.env.VITE_BASE_API
@@ -51,12 +45,9 @@ export const useStudentAnswerStore = defineStore('studentAnswer', () => {
     hypothesis_1: hypothesis_1.value,
     hypothesis_2: hypothesis_2.value,
     hypothesis_3: hypothesis_3.value,
-    table_p1_1: table_p1_1.value,
-    table_p1_2: table_p1_2.value,
-    table_p1_3: table_p1_3.value,
-    table_p2_1: table_p2_1.value,
-    table_p2_2: table_p2_2.value,
-    table_p2_3: table_p2_3.value,
+    tableQ_1: tableQ_1.value,
+    tableQ_2: tableQ_2.value,
+    tableQ_3: tableQ_3.value,
     conslusion: conslusion.value
   }
 
@@ -91,12 +82,9 @@ export const useStudentAnswerStore = defineStore('studentAnswer', () => {
     hypothesis_1,
     hypothesis_2,
     hypothesis_3,
-    table_p1_1,
-    table_p1_2,
-    table_p1_3,
-    table_p2_1,
-    table_p2_2,
-    table_p2_3,
+    tableQ_1,
+    tableQ_2,
+    tableQ_3,
     conslusion,
     storeStudentAnswer
   }
