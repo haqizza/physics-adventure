@@ -47,16 +47,16 @@ export const useStudentAnswerStore = defineStore('studentAnswer', () => {
         data: {
           name: name.value,
           studentClass: studentClass.value,
-          state_1: state_1.value,
-          state_2: state_2.value,
-          state_3: state_3.value,
-          hypothesis_1: hypothesis_1.value,
-          hypothesis_2: hypothesis_2.value,
-          hypothesis_3: hypothesis_3.value,
-          table_q_1: table_q_1.value,
-          table_q_2: table_q_2.value,
-          table_q_3: table_q_3.value,
-          conslusion: conslusion.value
+          state_1: encodeURI(state_1.value),
+          state_2: encodeURI(state_2.value),
+          state_3: encodeURI(state_3.value),
+          hypothesis_1: encodeURI(hypothesis_1.value),
+          hypothesis_2: encodeURI(hypothesis_2.value),
+          hypothesis_3: encodeURI(hypothesis_3.value),
+          table_q_1: encodeURI(table_q_1.value),
+          table_q_2: encodeURI(table_q_2.value),
+          table_q_3: encodeURI(table_q_3.value),
+          conslusion: encodeURI(conslusion.value),
         }
       }
 
