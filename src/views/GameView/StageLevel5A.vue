@@ -40,12 +40,12 @@ interface AnswerCorrection {
 const isNextButtonHidden = ref(true)
 
 const inputValues = reactive<TableInputValues>({
-  p11: '0.7',
-  p12: '1.20',
-  p13: '1.8',
-  p21: '1.45',
-  p22: '2.85',
-  p23: '4.9'
+  p11: '',
+  p12: '',
+  p13: '',
+  p21: '',
+  p22: '',
+  p23: ''
 })
 
 const answer: TableAnswerRange = {
