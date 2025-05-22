@@ -41,12 +41,12 @@ interface AnswerCorrection {
 const isNextButtonHidden = ref(true)
 
 const inputValues = reactive<TableInputValues>({
-  p11: '1.0',
-  p12: '1.5',
-  p13: '1.86',
-  p21: '2.35',
-  p22: '3.25',
-  p23: '4.2',
+  p11: '',
+  p12: '',
+  p13: '',
+  p21: '',
+  p22: '',
+  p23: '',
   yL1: '',
   yL2: '',
   yL3: '',
@@ -132,7 +132,7 @@ const backToExperiment = () => {
           <div class="mb-8 w-3/4 text-left font-neucha font-black text-white text-3xl md:text-5xl">
             Apa yang kamu temukan?
           </div>
-          <div class="w-full overflow-scroll">
+          <div class="w-full overflow-scroll md:overflow-hidden">
             <table class="min-w-lg border-separate border-spacing-2 table-fixed">
               <caption class="caption-top font-knewafe text-white">
                 Tabel 2

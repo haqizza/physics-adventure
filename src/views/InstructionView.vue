@@ -94,7 +94,7 @@ const toGame = () => {
 <template>
   <DetailModal :stage="activeStage" :text="activeStageDetail" :active="isModalActive" />
   <ScreenBackground sky="2" color="light" ground="3">
-    <div id="ContentWrapper" class="absolute h-screen w-full z-100 overflow-scroll">
+    <div id="ContentWrapper" class="absolute h-screen w-full z-100 overflow-scroll md:overflow-hidden">
       <div class="py-8 px-8 md:px-16">
         <h1 class="mt-4 md:mt-auto font-knewafe font-extralight text-center italic text-orange-900 text-4xl md:text-7xl font-black">
           The Journey
