@@ -16,6 +16,7 @@ import ClosingView from '@/views/ClosingView.vue'
 import StageLevel5CQuestion from '@/views/GameView/StageLevel5CQuestion.vue'
 import StageLevel5BQuestion from '@/views/GameView/StageLevel5BQuestion.vue'
 import StageLevel5AQuestion from '@/views/GameView/StageLevel5AQuestion.vue'
+import NotFound from '@/views/NotFound.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -104,7 +105,12 @@ const router = createRouter({
       path: '/closing',
       name: 'closing',
       component: ClosingView,
-    }
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: NotFound
+    },
   ],
 })
 

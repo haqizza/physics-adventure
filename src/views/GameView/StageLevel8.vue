@@ -2,6 +2,7 @@
 import ScreenBackground from '@/components/ScreenBackground.vue'
 import TheButton from '@/components/TheButton.vue'
 import router from '@/router'
+import { useStudentAnswerStore } from '@/stores/studentAnswer'
 import { ref } from 'vue'
 
 interface QuestionData {
@@ -54,6 +55,7 @@ const evaluationData: Array<QuestionData> = [
   }
 ]
 
+const studentAnswer = useStudentAnswerStore()
 
 const selected = ref<number>(0)
 const evaluationQuestionNumber = ref<number>(0)
@@ -68,6 +70,7 @@ const nextQuestion = () => {
     evaluationQuestionNumber.value++
 
     if (evaluationQuestionNumber.value == 3) {
+      studentAnswer.storeStudentAnswer()
       router.push({name: 'closing'})
     }
   }

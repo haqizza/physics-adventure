@@ -17,6 +17,7 @@ interface Props {
 }
 
 const props = defineProps<Props>()
+const emit = defineEmits(['answer-finished'])
 
 const correctAudioRef = useTemplateRef<HTMLAudioElement>('audioCorrect')
 const incorrectAudioRef = useTemplateRef<HTMLAudioElement>('audioIncorrect')
@@ -44,6 +45,7 @@ const checkAnswer = () => {
   const result: boolean = checkAnswerString(props.correctAnswer)
 
   if (result) {
+    emit('answer-finished', studentInput.value)
     correctAudioRef.value?.play()
     setTimeout(() => {
       isNextButtonHidden.value = false

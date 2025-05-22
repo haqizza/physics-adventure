@@ -27,7 +27,7 @@ setTimeout(() => {
 
 setTimeout(() => {
   isNextButtonHidden.value = false
-}, 143000)
+}, 105000)
 
 </script>
 
@@ -55,7 +55,7 @@ setTimeout(() => {
             playerClass="w-screen md:w-full"
             iframeClass="w-screen md:w-full h-52 md:h-100"
             wrapperClass="w-screen md:w-full h-52 md:h-100"
-            id="ShQJjdj7QxA"
+            id="wt8dJKnzTN4"
             title="Fenomena Difraksi Cahaya"
             :cookie="true"
           />
