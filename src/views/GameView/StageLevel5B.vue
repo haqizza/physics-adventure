@@ -132,7 +132,7 @@ const backToExperiment = () => {
           <div class="mb-8 w-3/4 text-left font-neucha font-black text-white text-3xl md:text-5xl">
             Apa yang kamu temukan?
           </div>
-          <div class="w-full overflow-scroll">
+          <div class="w-full overflow-scroll md:overflow-hidden">
             <table class="min-w-lg border-separate border-spacing-2 table-fixed">
               <caption class="caption-top font-knewafe text-white">
                 Tabel 2
