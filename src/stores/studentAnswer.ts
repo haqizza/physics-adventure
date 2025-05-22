@@ -12,10 +12,14 @@ interface StudentAnswer {
   hypothesis_1: string;
   hypothesis_2: string;
   hypothesis_3: string;
-  tableQ_1: string;
-  tableQ_2: string;
-  tableQ_3: string;
+  table_q_1: string;
+  table_q_2: string;
+  table_q_3: string;
   conslusion: string;
+}
+
+interface RequestBody {
+  data: StudentAnswer
 }
 
 export const useStudentAnswerStore = defineStore('studentAnswer', () => {
@@ -29,36 +33,39 @@ export const useStudentAnswerStore = defineStore('studentAnswer', () => {
   const hypothesis_1 = ref('')
   const hypothesis_2 = ref('')
   const hypothesis_3 = ref('')
-  const tableQ_1 = ref('')
-  const tableQ_2 = ref('')
-  const tableQ_3 = ref('')
+  const table_q_1 = ref('')
+  const table_q_2 = ref('')
+  const table_q_3 = ref('')
   const conslusion = ref('')
 
   const API_URL = import.meta.env.VITE_BASE_API
-
-  const _body: StudentAnswer = {
-    name: name.value,
-    studentClass: studentClass.value,
-    state_1: state_1.value,
-    state_2: state_2.value,
-    state_3: state_3.value,
-    hypothesis_1: hypothesis_1.value,
-    hypothesis_2: hypothesis_2.value,
-    hypothesis_3: hypothesis_3.value,
-    tableQ_1: tableQ_1.value,
-    tableQ_2: tableQ_2.value,
-    tableQ_3: tableQ_3.value,
-    conslusion: conslusion.value
-  }
+  const HOST = import.meta.env.VITE_HOST_URL
 
   async function storeStudentAnswer() {
     try{
+      const _body: RequestBody = {
+        data: {
+          name: name.value,
+          studentClass: studentClass.value,
+          state_1: state_1.value,
+          state_2: state_2.value,
+          state_3: state_3.value,
+          hypothesis_1: hypothesis_1.value,
+          hypothesis_2: hypothesis_2.value,
+          hypothesis_3: hypothesis_3.value,
+          table_q_1: table_q_1.value,
+          table_q_2: table_q_2.value,
+          table_q_3: table_q_3.value,
+          conslusion: conslusion.value
+        }
+      }
+
       const response = await fetch(`http://${API_URL}/api/answer`, {
         method: 'POST',
         body: JSON.stringify(_body),
         headers: new Headers({
           'Content-Type': 'application/json',
-          'Origin': 'localhost'
+          'Origin': HOST
         })
       })
 
@@ -82,9 +89,9 @@ export const useStudentAnswerStore = defineStore('studentAnswer', () => {
     hypothesis_1,
     hypothesis_2,
     hypothesis_3,
-    tableQ_1,
-    tableQ_2,
-    tableQ_3,
+    table_q_1,
+    table_q_2,
+    table_q_3,
     conslusion,
     storeStudentAnswer
   }

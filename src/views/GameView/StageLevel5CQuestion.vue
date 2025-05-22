@@ -5,10 +5,10 @@ import { useStudentAnswerStore } from '@/stores/studentAnswer';
 import { storeToRefs } from 'pinia';
 
 const studentAnswer = useStudentAnswerStore()
-const { tableQ_1 } = storeToRefs(studentAnswer)
+const { table_q_1 } = storeToRefs(studentAnswer)
 
 const handleAnswer = (answerValue: string) => {
-  tableQ_1.value = answerValue
+  table_q_1.value = answerValue
 }
 </script>
 
