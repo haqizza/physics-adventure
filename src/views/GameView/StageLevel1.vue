@@ -29,6 +29,15 @@ setTimeout(() => {
   isNextButtonHidden.value = false
 }, 105000)
 
+onMounted(() => {
+  document.addEventListener('keyup', waitTimeSkip)
+})
+
+const waitTimeSkip = (event:KeyboardEvent) => {
+  if (event.ctrlKey && event.key == 'ArrowRight') {
+    isNextButtonHidden.value = false
+  }
+}
 </script>
 
 <template>

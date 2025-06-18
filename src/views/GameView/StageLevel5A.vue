@@ -7,7 +7,7 @@ import page8Audio from '@/assets/audio/page-8-naration.m4a';
 import IncorrectAudio from '@/assets/audio/page-9-before false-answer.m4a';
 import CorrectAudio from '@/assets/audio/page-9-before right-answer.m4a';
 import router from '@/router';
-import { reactive, ref, useTemplateRef } from 'vue';
+import { onMounted, reactive, ref, useTemplateRef } from 'vue';
 import BaseInput from '@/components/Form/BaseInput.vue';
 
 interface TableInputValues {
@@ -65,6 +65,21 @@ const answerCorrection = reactive<AnswerCorrection>({
   p22: true,
   p23: true,
 })
+
+onMounted(() => {
+  document.addEventListener('keyup', fillAnswer)
+})
+
+const fillAnswer = (event:KeyboardEvent) => {
+  if (event.ctrlKey && event.key == 'ArrowRight') {
+    inputValues.p11 = '0.7'
+    inputValues.p12 = '1.20'
+    inputValues.p13 = '1.80'
+    inputValues.p21 = '1.40'
+    inputValues.p22 = '2.80'
+    inputValues.p23 = '4.9'
+  }
+}
 
 const correctAudioRef = useTemplateRef<HTMLAudioElement>('audioCorrect')
 const incorrectAudioRef = useTemplateRef<HTMLAudioElement>('audioIncorrect')

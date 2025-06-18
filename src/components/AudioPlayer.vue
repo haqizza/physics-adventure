@@ -59,6 +59,20 @@ const updateTime = () => {
 const replay = () => {
   audioRef.value!.currentTime = 0;
 };
+
+onMounted(() => {
+  document.addEventListener('keyup', keyupHandler)
+})
+
+const keyupHandler = (event:KeyboardEvent) => {
+  if (event.ctrlKey && event.key == 'ArrowRight') {
+    skipAudio()
+  }
+}
+
+const skipAudio = () => {
+  audioRef.value!.currentTime = duration.value - 1
+}
 </script>
 
 <template>

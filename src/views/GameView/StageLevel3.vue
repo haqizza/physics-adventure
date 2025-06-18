@@ -5,7 +5,7 @@ import Ivory from '@/assets/mascot/ivory.png';
 import AudioPlayer from '@/components/AudioPlayer.vue';
 import page6Audio from '@/assets/audio/page-6.m4a';
 import router from '@/router';
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import { useStudentAnswerStore } from '@/stores/studentAnswer';
 import BaseTextInput from '@/components/Form/BaseTextInput.vue';
 
