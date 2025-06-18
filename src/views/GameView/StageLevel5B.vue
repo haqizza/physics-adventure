@@ -77,12 +77,12 @@ onMounted(() => {
 
 const fillAnswer = (event:KeyboardEvent) => {
   if (event.ctrlKey && event.key == 'ArrowRight') {
-    inputValues.p11 = '0.7'
-    inputValues.p12 = '1.20'
-    inputValues.p13 = '1.80'
-    inputValues.p21 = '1.40'
-    inputValues.p22 = '2.80'
-    inputValues.p23 = '4.9'
+    inputValues.p11 = '1.0'
+    inputValues.p12 = '1.5'
+    inputValues.p13 = '1.86'
+    inputValues.p21 = '2.29'
+    inputValues.p22 = '3.20'
+    inputValues.p23 = '4.10'
   }
 }
 
