@@ -76,7 +76,7 @@ onMounted(() => {
 })
 
 const fillAnswer = (event:KeyboardEvent) => {
-  if (event.ctrlKey && event.key == 'ArrowRight') {
+  if (event.key == 'ArrowRight') {
     inputValues.p11 = '1.0'
     inputValues.p12 = '1.5'
     inputValues.p13 = '1.86'

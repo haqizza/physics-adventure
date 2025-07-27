@@ -65,7 +65,7 @@ onMounted(() => {
 })
 
 const keyupHandler = (event:KeyboardEvent) => {
-  if (event.ctrlKey && event.key == 'ArrowRight') {
+  if (event.key == 'ArrowRight') {
     skipAudio()
   }
 }

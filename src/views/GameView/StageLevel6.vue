@@ -35,7 +35,7 @@ onMounted(() => {
 })
 
 const waitTimeSkip = (event:KeyboardEvent) => {
-  if (event.ctrlKey && event.key == 'ArrowRight') {
+  if (event.key == 'ArrowRight') {
     isNextButtonHidden.value = false
   }
 }
